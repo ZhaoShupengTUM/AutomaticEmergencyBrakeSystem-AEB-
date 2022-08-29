@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pfas_nba</name>
+  <version>0.0.0</version>
+  <description>The pfas_nba package</description>
+
+  <maintainer email="simon.hoffmann@tum.de">simon</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tod_msgs</build_depend>
+  <build_depend>lgsvl_msgs</build_depend>
+  <build_depend>autoware_msgs</build_depend>
+  <build_depend>pfas_nba_lib</build_depend>
+
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>tod_msgs</build_export_depend>
+  <build_export_depend>lgsvl_msgs</build_export_depend>
+  <build_export_depend>autoware_msgs</build_export_depend>
+  <exec_depend>roscpp</exec_depend>
+
+</package>

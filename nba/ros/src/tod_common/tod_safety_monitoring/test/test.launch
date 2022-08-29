@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+<group ns="Tests/SafetyMonitoring">
+    <node pkg="tod_safety_monitoring" name="tod_safety_monitoring_tests" type="tod_safety_monitoring_test" output="screen"/>
+    <node pkg="tod_safety_monitoring" name="tod_safety_gate" type="safety_gate" output="screen">
+        <param name="debug" value="true"/>
+    </node>
+    <node pkg="tod_safety_monitoring" name="tod_safety_monitoring_node1" type="tod_safety_monitoring_node" output="screen">
+        <param name="key" value="key_from_node1"/>
+        <param name="level" value="3"/>
+    </node>
+    <node pkg="tod_safety_monitoring" name="tod_safety_monitoring_node2" type="tod_safety_monitoring_node" output="screen">
+        <param name="key" value="key_from_node2"/>
+        <param name="level" value="2"/>
+    </node>
+</group>
+
+</launch>

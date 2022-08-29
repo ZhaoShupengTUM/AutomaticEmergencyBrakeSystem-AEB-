@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="websocket_bridge" pkg="rosbridge_server" type="rosbridge_websocket"/>
+
+    <node pkg="tod_transform" type="CommonOdomTransformPublisher" name="CommonOdomTransformPublisher"/>
+    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher" args="2.3 0 0 0 0 0 base_footprint lidar_front_frame 100"/>
+
+    <node pkg="pfas_nba" type="Autopilot" name="Autopilot1" args="_start_velocity:=15.0 _topic_name:=/vehicle_cmd"/>
+    <!--<node pkg="pfas_nba" type="Autopilot" name="Autopilot1" args="_start_velocity:=15.0 _topic_name:=/VehicleCmd"/>-->
+    <node pkg="pfas_nba" type="Autopilot" name="Autopilot2" args="_start_velocity:=2.0 _topic_name:=/VehicleCmdObst"/>
+    
+    <node pkg="pfas_nba" type="TrajectoryPrediction" name="TrajcetoryPrediction"/>
+    <node pkg="pfas_nba" type="CorridorCreation" name="CorridorCreation"/>
+    <node pkg="pfas_nba" type="CollisionDetection" name="CollisionDetection" output="screen"/>
+
+    <node pkg="pfas_nba" type="ScenarioEvaluation" name="ScenarioEvaluation" output="screen"/>
+    <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" args="--multiplot-run-all --multiplot-config $(find pfas_nba)/rqt_multiplot.xml"/>-->
+</launch>
+

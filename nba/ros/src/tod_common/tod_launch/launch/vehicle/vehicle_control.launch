@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="launchDirectControl"/>
+    <arg name="vehicleID"/>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <arg name="launchClothoidControl"/>
+    <arg name="launchPathGuidance"/>
+    <arg name="launchPerceptionModification"/>
+    <arg name="launchSharedControl"/>
+    <arg name="launchNavigation"/>
+
+    <include file="$(find tod_command_creation)/launch/tod_command_creation.launch">
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+    </include>
+
+    <include file="$(find tod_direct_control)/launch/tod_direct_control.launch"
+        if="$(eval launchDirectControl)">
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_clothoid_control)/launch/tod_clothoid_control.launch"
+        if="$(eval launchClothoidControl)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_path_guidance)/launch/tod_path_guidance.launch"
+        if="$(eval launchPathGuidance)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_perception_modification)/launch/tod_perception_modification.launch"
+        if="$(eval launchPerceptionModification)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_shared_control)/launch/tod_shared_control.launch"
+        if="$(eval launchSharedControl)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_navigation)/launch/tod_navigation.launch"
+        if="$(eval launchNavigation)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+    </include>
+</launch>

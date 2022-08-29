@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+<group ns="Tests/Helper">
+    <node pkg="tod_helper" name="testTrajectoryHelpers" type="testTrajectoryHelpers" output="screen"/>
+    <node pkg="tod_helper" name="testGeometryHelpers" type="testGeometryHelpers" output="screen"/>
+</group>
+
+</launch>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pfas_nba_lib</name>
+  <version>0.0.0</version>
+  <description>The pfas_nba_lib package</description>
+
+  <maintainer email="mas.musterman@tum.de">simon</maintainer>
+
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

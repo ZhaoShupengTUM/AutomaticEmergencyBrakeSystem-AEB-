@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!-- NOT FOR OPEN SOURCE - ALL -->
+<launch>
+    <group ns="/Lidar/LidarTop">
+        <include file="$(find lidar_euclidean_cluster_detect)/launch/lidar_euclidean_cluster_detect.launch"/>
+    </group>
+</launch>

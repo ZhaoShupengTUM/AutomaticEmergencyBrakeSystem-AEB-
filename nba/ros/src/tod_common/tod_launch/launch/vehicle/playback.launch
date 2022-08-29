@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+<!-- NOT FOR OPEN SOURCE - MODIFY THE TEMPLATE -->
+
+<arg name="mode" default="playbackAll"/>
+
+<group ns="Vehicle">
+
+    <node pkg="rosbag" type="play" name="player"
+        args="-l -r 0.25
+        /home/$(env USER)/Documents/2021-03-10_all-sensors/all_sensors_2021-03-10-16-54-22.bag"
+        if="$(eval mode=='playbackAll')"/>
+
+    <!-- remaps as these topics are published by q7 test node-->
+    <node pkg="rosbag" type="play" name="player"
+        args="-l -r 0.25
+        /home/$(env USER)/Documents/2021-03-10_all-sensors/all_sensors_2021-03-10-16-54-22.bag
+        /Vehicle/VehicleBridge/vehicle_data:=none1
+        /Vehicle/VehicleBridge/odometry:=none2"
+        if="$(eval mode=='playbackSim')"/>
+
+</group>
+
+</launch>

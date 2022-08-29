@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/tofadmin/Desktop/pfas/nba/ros/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/pfas_nba_lib/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/tod_common/tod_cloud/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/tod_common/tod_helper/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/tod_common/tod_msgs/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/tod_common/tod_network/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/tod_common/tod_safety_monitoring/include/**",
+        "/home/tofadmin/Desktop/pfas/nba/ros/src/tod_common/tod_transform/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

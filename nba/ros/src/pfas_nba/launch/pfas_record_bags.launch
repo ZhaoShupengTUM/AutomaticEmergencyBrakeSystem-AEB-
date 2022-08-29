@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+<group ns="PFAS/Logging">
+
+<node name="LaserscanToPointcloud" pkg="tod_clothoid_control" type="CommonLaserscanToPointcloudNode" output="screen">
+    <param name="frame" value="base_footprint"/>
+    <remap from="scan" to="/Vehicle/Lidar/LidarFront/scan"/> 
+    <remap from="point_cloud" to="/Vehicle/Lidar/LidarFront/point_cloud"/> 
+</node>
+<!--  LOGGING  -->
+<node pkg="rosbag" type="record" name="clothoid_vehicle_logger"
+args="-o /home/$(env USER)/Documents/ToD_Logs/pfas_nba
+/tf
+/tf_static
+/Vehicle/VehicleBridge/odometry
+/Vehicle/VehicleBridge/vehicle_data
+/Vehicle/Visualization/vehicle_marker
+/Vehicle/Lidar/LidarFront/point_cloud"/>
+</group>
+
+</launch>

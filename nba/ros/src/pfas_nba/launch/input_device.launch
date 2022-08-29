@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="InputDevice" pkg="tod_input_devices" type="InputDevice" output="screen">
+          <rosparam command="load" file="$(find tod_input_devices)/config/virtual.yaml" />
+          <param name="ConfigMode" value="false"/>
+          <param name="debug" value="false"/>
+    </node>
+
+    <remap from="/Operator/InputDevices/joystick" to="/joystick"/>
+    <node name="VehicleCommandToLGSVL" pkg="tod_lgsvl_bridge" type="VehicleCommandToLGSVL" output="screen"/>
+
+    <node name="CommandCreator" pkg="tod_command_creation" type="OperatorCommandCreator" output="screen">
+        <rosparam command="load" file="$(find tod_vehicle_config)/vehicle_config/lgsvl/vehicle-params.yaml"/>
+        <param name="ConstraintSteeringRate" value="false"/>
+        <param name="InvertSteeringInGearReverse" value="false"/>
+        <param name="maxVelocity" value="20"/> <!-- m/s -->
+        <param name="maxAcceleration" value="4"/> <!-- m/s² -->
+        <param name="maxDeceleration" value="9"/> <!-- m/s² -->
+        <param name="maxSteeringWheelAngleRate" value="7.5"/> <!-- rad/s -->
+    </node>
+</launch>

@@ -1,0 +1,57 @@
+stages:
+  - style-check
+  - build_and_test
+
+before_script:
+  - chmod +x ci/style_check_job.sh
+
+
+tod_cloud:
+  stage: style-check
+  tags:
+    - workstation
+  script:
+    - ./ci/style_check_job.sh tod_cloud/src && ./ci/style_check_job.sh tod_cloud/include
+  allow_failure: true
+
+tod_helper: 
+  stage: style-check
+  tags: 
+    - workstation
+  script:
+    - ./ci/style_check_job.sh tod_helper/src && ./ci/style_check_job.sh tod_helper/include
+  allow_failure: true
+
+tod_msgs: 
+  stage: style-check
+  tags: 
+    - workstation
+  script: 
+    - ./ci/style_check_job.sh tod_msgs/src && ./ci/style_check_job.sh tod_msgs/include
+  allow_failure: true
+
+tod_network: 
+  stage: style-check
+  tags: 
+    - workstation
+  script: 
+    - ./ci/style_check_job.sh tod_network/src && ./ci/style_check_job.sh tod_network/include
+  allow_failure: true
+
+tod_transform:
+  stage: style-check
+  tags:
+  - workstation
+  script:
+  - ./ci/style_check_job.sh tod_transform/src && ./ci/style_check_job.sh tod_transform/include
+  allow_failure: true
+
+
+tod_helper build:
+    stage: build_and_test
+    tags:
+      - workstation
+    script:
+      - chmod +x ci/build_and_test_job.sh
+      - ./ci/build_and_test_job.sh tod_helper testInclusionChecker testObjectList testControlModeChecker testConversion testGeometryHelpers testStatusChangeDetector
+    allow_failure: true

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="vehicleID"/>
+    <arg name="launchVideo"/>
+    <arg name="launchLidar"/>
+    <!-- NOT FOR OPEN SOURCE -->
+    <arg name="launchAudio"/>
+    <arg name="launchAutowarePerception"/>
+
+    <include file="$(find tod_video)/launch/tod_video.launch"
+        if="$(eval launchVideo)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <include file="$(find tod_lidar)/launch/tod_lidar.launch"
+        if="$(eval launchLidar)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_audio)/launch/tod_audio.launch"
+        if="$(eval launchAudio)">
+        <arg name="isVehicle" value="true"/>
+        <arg name="isOperator" value="false"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <!-- NOT FOR OPEN SOURCE -->
+    <include file="$(find tod_launch)/launch/vehicle/autoware_perception.launch"
+        if="$(eval launchAutowarePerception and vehicleID=='tum-q7')"/>
+</launch>

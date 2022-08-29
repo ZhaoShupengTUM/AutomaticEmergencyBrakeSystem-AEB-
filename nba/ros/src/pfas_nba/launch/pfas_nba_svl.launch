@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="websocket_bridge" pkg="rosbridge_server" type="rosbridge_websocket" output="screen"/>
+
+    <node pkg="tod_transform" type="CommonOdomTransformPublisher" name="CommonOdomTransformPublisher"/>
+    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher" args="2.3 0 0 0 0 0 base_footprint lidar_front_frame 100"/>
+
+    <node pkg="pfas_nba" type="TrajectoryPrediction" name="TrajcetoryPrediction"/>
+    <node pkg="pfas_nba" type="CorridorCreation" name="CorridorCreation"/>
+    <node pkg="pfas_nba" type="CollisionDetection" name="CollisionDetection" output="screen"/>
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find pfas_nba)/pfas_svl.rviz"/>
+
+    <include file="$(find pfas_nba)/launch/input_device.launch"/>
+</launch>
+

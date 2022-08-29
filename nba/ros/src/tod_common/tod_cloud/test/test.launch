@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <group ns="Tests/HttpHandler">
+        <node pkg="tod_cloud" name="testHttpHandler" type="testHttpHandler" output="screen"/>
+    </group>
+</launch>

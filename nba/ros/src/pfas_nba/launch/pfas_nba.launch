@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+<group ns="Vehicle/NBA">
+    <node name="TrajectoryPrediction" pkg="pfas_nba" type="TrajectoryPrediction" output="screen"/>
+    <node name="CorridorCreation" pkg="pfas_nba" type="CorridorCreation" output="screen"/>
+    <node name="CollisionDetection" pkg="pfas_nba" type="CollisionDetection" output="screen"/>
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find pfas_nba)/pfas.rviz" />
+    <node pkg="rosbag" type="play" name="player" args="-l -r 0.5 $(find pfas_nba)/bag/pfas_nba_test.bag"/>
+</group>
+
+</launch>

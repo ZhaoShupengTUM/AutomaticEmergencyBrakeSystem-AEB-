@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="vehicleID" default="tum-q7"/> <!-- tum-q7, rc-car. NOT FOR OPEN SOURCE: lgsvl, unicaragil-->
+    <arg name="mode" default="playbackAll"/> <!-- vehicle, playbackAll, playbackSim, onlySim -->
+
+    <!-- Vehicle Interface -->
+    <arg name="launchVehicleBridge" default="true"/>
+
+    <!-- Control -->
+    <arg name="launchDirectControl" default="true"/>
+    <!-- NOT FOR OPEN SOURCE -->
+    <arg name="launchSharedControl" default="false"/>
+    <arg name="launchClothoidControl" default="true"/>
+    <arg name="launchPathGuidance" default="false"/>
+    <arg name="launchPerceptionModification" default="false"/> <!-- missing installs for docker -->
+    <arg name="launchNavigation" default="false"/>
+
+    <!-- Perception -->
+    <arg name="launchVideo" default="true"/>
+    <arg name="launchLidar" default="true"/>
+    <!-- NOT FOR OPEN SOURCE -->
+    <arg name="launchAudio" default="true"/>
+    <arg name="launchAutowarePerception" default="false"/> <!-- missing installs for docker -->
+
+
+    <!-- Common -->
+    <!-- NOT FOR OPEN SOURCE -->
+    <arg name="launchSenderToCloud" default="true"/>
+    <arg name="launchLogging" default="false"/>
+
+    <include file="$(find tod_launch)/launch/vehicle/vehicle_vehicle_interface.launch">
+        <arg name="launchVehicleBridge" value="$(arg launchVehicleBridge)"/>
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+        <arg name="mode" value="$(arg mode)"/>
+    </include>
+
+    <include file="$(find tod_launch)/launch/vehicle/vehicle_operator_interface.launch"/>
+
+    <include file="$(find tod_launch)/launch/vehicle/vehicle_perception.launch">
+        <arg name="launchVideo" value="$(arg launchVideo)"/>
+        <arg name="launchLidar" value="$(arg launchLidar)"/>
+        <!-- NOT FOR OPEN SOURCE -->
+        <arg name="launchAudio" value="$(arg launchAudio)"/>
+        <arg name="launchAutowarePerception" value="$(arg launchAutowarePerception)"/>
+
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <include file="$(find tod_launch)/launch/vehicle/vehicle_control.launch">
+        <arg name="launchDirectControl" value="$(arg launchDirectControl)"/>
+        <!-- NOT FOR OPEN SOURCE -->
+        <arg name="launchSharedControl" value="$(arg launchSharedControl)"/>
+        <arg name="launchClothoidControl" value="$(arg launchClothoidControl)"/>
+        <arg name="launchPathGuidance" value="$(arg launchPathGuidance)"/>
+        <arg name="launchPerceptionModification" value="$(arg launchPerceptionModification)"/>
+        <arg name="launchNavigation" value="$(arg launchNavigation)"/>
+
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+    </include>
+
+    <include file="$(find tod_launch)/launch/vehicle/vehicle_common.launch">
+        <arg name="vehicleID" value="$(arg vehicleID)"/>
+        <arg name="mode" value="$(arg mode)"/>
+
+        <!-- NOT FOR OPEN SOURCE -->
+        <arg name="launchSenderToCloud" value="$(arg launchSenderToCloud)"/>
+        <arg name="launchLogging" value="$(arg launchLogging)"/>
+    </include>
+</launch>
