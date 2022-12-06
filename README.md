@@ -1,7 +1,7 @@
 # PFAS
 This stores the code wrote in the lab couese "Advanced Driver Assistant System" in TUM. The lab course teaches how to modell, design and simulate an Automatic Emergency Braking System.  
-Environments: Matlab, Ubuntu 18.04, VS code, C++, LG SVL Simulator, ROS1-noetic  
-Main Parts:
+**Environments**: Matlab, Ubuntu 18.04, VS code, C++, LG SVL Simulator, ROS1-noetic  
+**Main Parts**:  
 -Braking Process model  
 -Radar simulink model  
 -AEB function trigger principle: trajectory prediction, corridor generation, collsion checking, AEB trigger  
